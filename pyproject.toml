@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "deepagents>=0.3.0",
     "firecrawl-py>=4.12.0",
     "langchain-openai>=1.1.6",
     "langgraph>=1.0.5",
@@ -19,9 +20,46 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "langgraph-cli>=0.4.11",
+    "langgraph-cli[inmem]>=0.4.11",
     "mypy>=1.19.1",
     "pre-commit>=4.5.1",
     "pytest>=9.0.2",
+    "rich>=14.2.0",
     "ruff>=0.14.10",
 ]
+
+[build-system]
+requires = ["setuptools>=73.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["lg_deep_agent"]
+
+[tool.setuptools.package-dir]
+"lg_deep_agent" = "src/lg_deep_agent"
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+
+# https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+line-length = 120
+indent-width = 4
+target-version = "py313"
+lint.select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "I",    # isort
+    "D",    # pydocstyle
+]
+lint.ignore = [
+    "D100", # Missing docstring in public module
+    "D103", # Missing docstring in public function
+    "D104", # Missing docstring in public package
+]
+
+[tool.ruff.lint.per-file-ignores]
+"src/test_external_tools/*" = ["D"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

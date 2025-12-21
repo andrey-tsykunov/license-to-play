@@ -1,0 +1,8 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "agent": "./src/lg_deep_agent/graphs.py:math_agent_graph"
+  },
+  "env": ".env"
+}
+
