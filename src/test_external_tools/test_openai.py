@@ -2,6 +2,8 @@ from openai import OpenAI
 
 
 def test_openai_chat_api():
+    # https://platform.openai.com/docs/models
+
     client = OpenAI()
 
     response = client.chat.completions.create(

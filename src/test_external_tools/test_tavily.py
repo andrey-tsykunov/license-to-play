@@ -12,8 +12,6 @@ def test_tavily_search():
 
 def test_tavily_extract():
     tavily_client = TavilyClient()
-    response = tavily_client.extract(
-        "https://docs.tavily.com/documentation/api-reference/endpoint/search"
-    )
+    response = tavily_client.extract("https://docs.tavily.com/documentation/api-reference/endpoint/search")
 
     print(yaml.dump(response))

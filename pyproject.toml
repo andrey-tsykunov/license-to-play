@@ -5,15 +5,21 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "agno>=2.3.21",
+    "anthropic>=0.75.0",
     "deepagents>=0.3.0",
+    "fastapi[standard]>=0.127.0",
     "firecrawl-py>=4.12.0",
     "langchain-openai>=1.1.6",
     "langgraph>=1.0.5",
     "loguru>=0.7.3",
+    "mcp>=1.25.0",
     "ollama>=0.6.1",
     "openai>=2.14.0",
+    "openai-agents[viz]>=0.6.4",
     "perplexityai>=0.22.2",
     "python-dotenv>=1.2.1",
+    "sqlalchemy>=2.0.45",
     "tavily-python>=0.7.17",
     "universal-pathlib>=0.3.7",
 ]
@@ -22,8 +28,10 @@ dependencies = [
 dev = [
     "langgraph-cli[inmem]>=0.4.11",
     "mypy>=1.19.1",
+    "notebook>=7.5.1",
     "pre-commit>=4.5.1",
     "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
     "rich>=14.2.0",
     "ruff>=0.14.10",
 ]
@@ -33,10 +41,10 @@ requires = ["setuptools>=73.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["lg_deep_agent"]
+packages = ["langgraph_agent"]
 
 [tool.setuptools.package-dir]
-"lg_deep_agent" = "src/lg_deep_agent"
+"langgraph_agent" = "src/langgraph_agent"
 
 [tool.setuptools.package-data]
 "*" = ["py.typed"]
@@ -56,6 +64,7 @@ lint.ignore = [
     "D100", # Missing docstring in public module
     "D103", # Missing docstring in public function
     "D104", # Missing docstring in public package
+    "D415", # First line should end with a period, question mark, or exclamation point
 ]
 
 [tool.ruff.lint.per-file-ignores]

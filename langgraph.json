@@ -1,7 +1,8 @@
 {
   "dependencies": ["."],
   "graphs": {
-    "agent": "./src/lg_deep_agent/graphs.py:math_agent_graph"
+    "math_agent": "./src/langgraph_agent/graphs.py:math_agent_graph",
+    "agent": "./src/langgraph_agent/graphs.py:research_agent_graph"
   },
   "env": ".env"
 }

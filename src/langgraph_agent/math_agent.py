@@ -8,7 +8,7 @@ from langgraph.graph import MessagesState
 from langgraph.graph.state import CompiledStateGraph, StateGraph
 from langgraph.prebuilt import ToolNode, tools_condition
 
-from lg_deep_agent.config import DEFAULT_AGENT_MODEL
+from langgraph_agent.config import DEFAULT_AGENT_MODEL
 
 
 def multiply(a: int, b: int) -> int:
