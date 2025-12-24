@@ -5,23 +5,23 @@ from agno.agent import Agent
 from agno.db.sqlite import SqliteDb
 from agno.models.base import Model
 from agno.tools import tool
-from agno.tools.user_control_flow import UserControlFlowTools
 from dotenv import load_dotenv
 
 from agno_agent.config import create_model
 
 
 @tool(requires_confirmation=True)
-def reverse_transaction(id: str, comment_from_advisor: str) -> bool:
+def reverse_transaction(id: str) -> bool:
     """Reverse fee by transaction id. Only transactions with type "fee" can be reversed. User need to confirm the action
 
     Args:
         id: id of the transaction to reverse
-        comment_from_advisor: Comment from advisor why the transaction is being reversed (to be reported to compliance)
 
     Returns:
         bool: True if the transaction was reversed, False otherwise
     """
+
+    # comment_from_advisor: Comment from advisor why the transaction is being reversed (to be reported to compliance)
     if id == "CT0005":
         return True
     return False
@@ -125,7 +125,8 @@ Please use the following guideline when answering questions:
 - if client is asking for reversal of a transaction, make sure to check if the transaction is of type "fee" and provide a warning if the client already reversed fees in the past
 - be concise, don't repeat the same information multiple times
         """,
-        tools=[reverse_transaction, accounts_list, fetch_transactions, previous_reversals, UserControlFlowTools()],
+        #  UserControlFlowTools()
+        tools=[reverse_transaction, accounts_list, fetch_transactions, previous_reversals],
         add_history_to_context=True,
         num_history_runs=5,
         markdown=True,
