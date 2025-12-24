@@ -24,6 +24,10 @@ def create_support_agent(model: Model, db: BaseDb):
     """,
         add_history_to_context=True,
         num_history_runs=5,
+        respond_directly=True,
+        determine_input_for_members=True,
+        show_members_responses=True,
+        stream_events=True,
         markdown=True,
     )
 
