@@ -76,7 +76,8 @@ fastapi dev src/agno_agent/basic_agent.py
 
 This would make it accessible via:
 * REST API: http://127.0.0.1:8000/docs
-* Agno OS UI: https://os.agno.com/
+* [Agno OS UI](https://docs.agno.com/agent-os/introduction): https://os.agno.com/
+* [Agent UI](https://docs.agno.com/basics/agent-ui/overview): http://localhost:3000/
 
 # MCP servers
 

@@ -10,7 +10,7 @@ def client() -> OpenAI:
     )
 
 
-def test_olllama_chat_api(client: OpenAI):
+def test_ollama_via_openai_chat_api(client: OpenAI):
     response = client.chat.completions.create(
         model="gemma3:1b",
         messages=[
@@ -38,6 +38,21 @@ def test_ollama_response_api(client: OpenAI):
     # Ollama is OpenAI API compatible for the traditional chat completions endpoints but does not yet support
     # the newer OpenAI Responses API used for agent features and newer workflow interactions
     print(response.output_text)
+
+
+def test_ollama_chat():
+    client = Client()
+    response = client.chat(
+        model="gemma3:1b",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Who won the world series in 2020?"},
+            {"role": "assistant", "content": "The LA Dodgers won in 2020."},
+            {"role": "user", "content": "Where was it played?"},
+        ],
+    )
+
+    print(response.message.content)
 
 
 def test_ollama_web_search():

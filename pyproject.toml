@@ -7,6 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "agno>=2.3.21",
     "anthropic>=0.75.0",
+    "ddgs>=9.10.0",
     "deepagents>=0.3.0",
     "fastapi[standard]>=0.127.0",
     "firecrawl-py>=4.12.0",
@@ -58,12 +59,14 @@ lint.select = [
     "E",    # pycodestyle
     "F",    # pyflakes
     "I",    # isort
-    "D",    # pydocstyle
+    #"D",    # pydocstyle
 ]
 lint.ignore = [
     "D100", # Missing docstring in public module
+    "D101", # Missing docstring in public class
     "D103", # Missing docstring in public function
     "D104", # Missing docstring in public package
+    "E501", # Line too long
     "D415", # First line should end with a period, question mark, or exclamation point
 ]
 
