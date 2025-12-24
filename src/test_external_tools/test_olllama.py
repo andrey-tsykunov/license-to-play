@@ -43,7 +43,7 @@ def test_ollama_response_api(client: OpenAI):
 def test_ollama_chat():
     client = Client()
     response = client.chat(
-        model="gemma3:1b",
+        model="llama3.1",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": "Who won the world series in 2020?"},

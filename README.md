@@ -71,11 +71,12 @@ This would make it accessible via:
 [Agno](https://docs.agno.com/introduction) is an incredibly fast multi-agent framework, runtime and control plane.
 
 ```bash
-fastapi dev src/agno_agent/basic_agent.py
+fastapi dev src/agno_agent/agents.py
 ```
 
 This would make it accessible via:
 * REST API: http://127.0.0.1:8000/docs
+* Agent OS Config: http://127.0.0.1:8000/config
 * [Agno OS UI](https://docs.agno.com/agent-os/introduction): https://os.agno.com/
 * [Agent UI](https://docs.agno.com/basics/agent-ui/overview): http://localhost:3000/
 
