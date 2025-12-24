@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 from agno_agent import agno_docs_agent, math_agent, research_agent
 from agno_agent.config import create_db, create_model
-from agno_agent.support_agent import create_support_agent
+from agno_agent.support_agent import create_support_agent, get_sample_support_questions
 
 load_dotenv()
 
@@ -13,17 +13,7 @@ db = create_db()
 
 support_team = create_support_agent(model, db)
 
-config = AgentOSConfig(
-    chat=ChatConfig(
-        quick_prompts={
-            "support-agent": [
-                "Client wants to reverse a fee charged in august",
-                "What are recent credit card Walmart transactions",
-                "Did client reversed any fees in the past?",
-            ]
-        }
-    )
-)
+config = AgentOSConfig(chat=ChatConfig(quick_prompts={"support-agent": get_sample_support_questions()}))
 
 agent_os = AgentOS(
     name="MyAgentOS",

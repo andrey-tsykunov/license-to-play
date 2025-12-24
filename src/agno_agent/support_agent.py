@@ -26,3 +26,11 @@ def create_support_agent(model: Model, db: BaseDb):
         num_history_runs=5,
         markdown=True,
     )
+
+
+def get_sample_support_questions() -> list[str]:
+    return [
+        "Client wants to reverse a fee charged in august",
+        "What are recent credit card transactions for Walmart",
+        "Did client reverse any fees in the past?",
+    ]

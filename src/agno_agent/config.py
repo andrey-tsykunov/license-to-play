@@ -8,10 +8,15 @@ from agno.models.base import Model
 from agno.models.ollama import Ollama
 from agno.models.openai import OpenAIChat
 
-DEFAULT_AGENT_MODEL = os.environ.get("DEFAULT_AGENT_MODEL", "claude-sonnet-4-20250514")
+
+def get_default_model() -> str:
+    return os.environ.get("DEFAULT_AGENT_MODEL", "claude-haiku-4-5-20251001")
 
 
-def create_model(name: str = DEFAULT_AGENT_MODEL, max_tokens: Optional[int] = None) -> Model:
+def create_model(name: Optional[str] = None, max_tokens: Optional[int] = None) -> Model:
+    if name is None:
+        name = get_default_model()
+
     if name.startswith("claude"):
         return Claude(id=name, max_tokens=max_tokens or 4096)
     elif name.startswith("gpt"):
