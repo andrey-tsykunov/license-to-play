@@ -72,6 +72,8 @@ This would make it accessible via:
 
 ```bash
 fastapi dev src/agno_agent/agents.py
+# or in DEBUG mode
+AGNO_DEBUG=True fastapi dev src/agno_agent/agents.py
 ```
 
 This would make it accessible via:

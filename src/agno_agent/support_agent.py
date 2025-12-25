@@ -1,14 +1,13 @@
+from agno.agent import Agent
 from agno.db import BaseDb
 from agno.models.base import Model
 from agno.team import Team
 
-from agno_agent.fee_agent import create_fee_inquiry_agent
 
-
-def create_support_agent(model: Model, db: BaseDb):
+def create_support_agent(model: Model, db: BaseDb, fee_agent: Agent):
     return Team(
         name="Support Agent",
-        members=[create_fee_inquiry_agent(model, db)],
+        members=[fee_agent],
         model=model,
         db=db,
         # reasoning=True,
@@ -30,11 +29,3 @@ def create_support_agent(model: Model, db: BaseDb):
         stream_events=True,
         markdown=True,
     )
-
-
-def get_sample_support_questions() -> list[str]:
-    return [
-        "Client wants to reverse a fee charged in august",
-        "What are recent credit card transactions for Walmart",
-        "Did client reverse any fees in the past?",
-    ]

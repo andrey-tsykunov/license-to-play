@@ -142,6 +142,14 @@ Please use the following guideline when serving the client:
     )
 
 
+def get_sample_fee_questions() -> list[str]:
+    return [
+        "Client wants to reverse a fee charged in august",
+        "What are recent credit card transactions for Walmart",
+        "Did client reverse any fees in the past?",
+    ]
+
+
 if __name__ == "__main__":
     load_dotenv()
 
