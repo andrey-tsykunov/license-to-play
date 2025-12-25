@@ -80,6 +80,16 @@ This would make it accessible via:
 * [Agno OS UI](https://docs.agno.com/agent-os/introduction): https://os.agno.com/
 * [Agent UI](https://docs.agno.com/basics/agent-ui/overview): http://localhost:3000/
 
+Alternatively, run directly with python:
+```bash
+PYTHONPATH=src python src/agno_agent/agents.py
+````
+
+This would make it accessible via:
+* REST API: http://127.0.0.1:7777/docs
+* etc
+
+
 # MCP servers
 
 ## How to test / inspect MCP endpoints

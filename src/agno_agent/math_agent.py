@@ -36,7 +36,7 @@ def divide(a: int, b: int) -> float:
     return a / b
 
 
-def create_agent(model: Model) -> Agent:
+def create_math_agent(model: Model) -> Agent:
     return Agent(
         name="Math Agent",
         model=model,
@@ -49,6 +49,6 @@ def create_agent(model: Model) -> Agent:
 if __name__ == "__main__":
     load_dotenv()
 
-    agent = create_agent(create_model("llama3.1"))
+    agent = create_math_agent(create_model("llama3.1"))
 
     agent.print_response("Add 3 and 4, then multiply by 2 and divide by 5")
