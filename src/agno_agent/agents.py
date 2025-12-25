@@ -15,7 +15,7 @@ model = create_model()
 db = create_db()
 
 fee_agent = create_fee_inquiry_agent(model, db)
-support_team = create_support_agent(model, db)
+support_team = create_support_agent(model, db, fee_agent)
 math_agent = create_math_agent(model)
 config = AgentOSConfig(
     chat=ChatConfig(

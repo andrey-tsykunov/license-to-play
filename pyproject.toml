@@ -8,6 +8,7 @@ dependencies = [
     "ag-ui-protocol>=0.1.10",
     "agno>=2.3.21",
     "anthropic>=0.75.0",
+    "claude-agent-sdk>=0.1.18",
     "ddgs>=9.10.0",
     "deepagents>=0.3.0",
     "fastapi[standard]>=0.127.0",
