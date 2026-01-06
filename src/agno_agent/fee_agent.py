@@ -22,7 +22,7 @@ def reverse_transaction(id: str) -> bool:
     """
 
     # comment_from_advisor: Comment from advisor why the transaction is being reversed (to be reported to compliance)
-    if id == "CT0005":
+    if id == "CT0008":
         return True
     return False
 
@@ -41,7 +41,7 @@ def previous_reversals() -> list[ReversalInfo]:
     Returns:
         list[ReversalInfo]: list of previous reversals (transaction_id, transaction_timestamp, reversal_timestamp and amount)
     """
-    return [ReversalInfo("CT0003", datetime(2025, 6, 3, 9, 0), datetime(2025, 7, 2, 11, 0), 10.0)]
+    return [ReversalInfo("CT0004", datetime(2025, 6, 3, 9, 0), datetime(2025, 7, 2, 11, 0), -10.0)]
 
 
 @dataclass
@@ -86,17 +86,16 @@ def fetch_transactions(account_id: str, type: str | None) -> list[TransactionInf
     data = {
         "C00001": [
             TransactionInfo("CT0001", "purchase", "Amazon", datetime(2025, 6, 1, 10, 0), -50.0),
-            TransactionInfo("CT0002", "e-transfer", "John Doe", datetime(2025, 6, 2, 12, 30), -200.0),
-            TransactionInfo("CT0003", "fee", "Monthly Maintenance", datetime(2025, 6, 3, 9, 0), -10.0),
-            TransactionInfo("CT0004", "fee", "Monthly Maintenance", datetime(2025, 7, 3, 9, 0), -10.0),
-            TransactionInfo("CT0005", "fee", "Monthly Maintenance", datetime(2025, 8, 3, 9, 0), -10.0),
+            TransactionInfo("ST0002", "withdrawal", "ATM Withdrawal", datetime(2025, 6, 2, 11, 0), -100.0),
+            TransactionInfo("CT0003", "e-transfer", "John Doe", datetime(2025, 6, 2, 12, 30), -200.0),
+            TransactionInfo("CT0004", "fee", "Monthly Maintenance", datetime(2025, 6, 3, 9, 0), -10.0),
+            TransactionInfo("CT0005", "deposit", "Paycheck", datetime(2025, 7, 1, 15, 0), 1500.0),
+            TransactionInfo("CT0006", "fee", "Monthly Maintenance", datetime(2025, 7, 3, 9, 0), -10.0),
+            TransactionInfo("CT0007", "deposit", "Paycheck", datetime(2025, 8, 1, 15, 0), 1500.0),
+            TransactionInfo("CT0008", "fee", "Monthly Maintenance", datetime(2025, 8, 3, 9, 0), -10.0),
         ],
         "S00001": [
-            TransactionInfo("ST0001", "deposit", "Paycheck", datetime(2025, 3, 1, 15, 0), 1500.0),
-            TransactionInfo("ST0002", "deposit", "Paycheck", datetime(2025, 4, 1, 15, 0), 1500.0),
-            TransactionInfo("ST0003", "deposit", "Paycheck", datetime(2025, 5, 1, 15, 0), 1500.0),
-            TransactionInfo("ST0004", "deposit", "Paycheck", datetime(2025, 6, 1, 15, 0), 1500.0),
-            TransactionInfo("ST0005", "withdrawal", "ATM Withdrawal", datetime(2025, 6, 2, 11, 0), -100.0),
+            TransactionInfo("ST0001", "deposit", "Transfer", datetime(2025, 3, 1, 15, 0), 1500.0),
         ],
         "CR00001": [
             TransactionInfo("CRT0003", "purchase", "TTC", datetime(2025, 5, 1, 14, 0), -50.0),
@@ -128,7 +127,7 @@ def create_fee_inquiry_agent(model: Model, db: BaseDb) -> Agent:
 Please use the following guideline when serving the client:
 - plan your steps before running the tools. Helping with user inquiry may require to chain multiple tool calls
 - format results returned from tools as a table
-- if question is ambiguous ask for more information
+- client inquiry could be ambiguous. think if it could be disambiguated by checking some data using tools. If it is not possible, ask for more information
 - if client is asking for reversal of a transaction, make sure to check if the transaction is of type "fee", other type of transactions cannot be reversed
 - before proceeding with reversal provide a warning if the client already reversed fees in the past
 - be concise, don't repeat the same information multiple times (ie no need to summarize information if it's already provided earlier)
