@@ -120,13 +120,14 @@ def fetch_transactions(account_id: str, type: str | None) -> list[TransactionInf
 
 def create_fee_inquiry_agent(model: Model, db: BaseDb) -> Agent:
     return Agent(
-        name="Fee Inquiry and Reversal Agent",
+        name="Fee Inquiry Agent",
         model=model,
         db=db,
         instructions="""You are a support assistant *specialized* in transaction fee inquiries, explanation and reversal process.
 Please use the following guideline when serving the client:
 - plan your steps before running the tools. Helping with user inquiry may require to chain multiple tool calls
 - format results returned from tools as a table
+- if question involves query with relative time (e.g. last 3 months), use current date to calculate the date range
 - client inquiry could be ambiguous. think if it could be disambiguated by checking some data using tools. If it is not possible, ask for more information
 - if client is asking for reversal of a transaction, make sure to check if the transaction is of type "fee", other type of transactions cannot be reversed
 - before proceeding with reversal provide a warning if the client already reversed fees in the past
@@ -135,6 +136,7 @@ Please use the following guideline when serving the client:
         #  UserControlFlowTools()
         tools=[reverse_transaction, accounts_list, fetch_transactions, previous_reversals],
         add_history_to_context=True,
+        add_datetime_to_context=True,
         num_history_runs=5,
         # reasoning=True,
         markdown=True,
@@ -145,7 +147,7 @@ def get_sample_fee_questions() -> list[str]:
     return [
         "Client wants to reverse a fee charged in august",
         "What are recent credit card transactions for Walmart",
-        "Did client reverse any fees in the past?",
+        "Did client reverse any fees in last 12 months?",
     ]
 
 

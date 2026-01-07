@@ -11,17 +11,17 @@ from agno_agent.support_agent import create_support_agent
 
 load_dotenv()
 
-model = create_model()
+model = create_model(max_tokens=16384)
 db = create_db()
 
 fee_agent = create_fee_inquiry_agent(model, db)
-support_team = create_support_agent(model, db, fee_agent)
+support_team = create_support_agent(model, [fee_agent], db)
 math_agent = create_math_agent(model)
 config = AgentOSConfig(
     chat=ChatConfig(
         quick_prompts={
             "support-agent": get_sample_fee_questions(),
-            "fee-inquiry-and-reversal-agent": get_sample_fee_questions(),
+            "fee-inquiry-agent": get_sample_fee_questions(),
         }
     )
 )

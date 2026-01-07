@@ -4,10 +4,10 @@ from agno.models.base import Model
 from agno.team import Team
 
 
-def create_support_agent(model: Model, db: BaseDb, fee_agent: Agent):
+def create_support_agent(model: Model, agents: list[Agent], db: BaseDb):
     return Team(
         name="Support Agent",
-        members=[fee_agent],
+        members=agents,
         model=model,
         db=db,
         # reasoning=True,
@@ -22,6 +22,7 @@ def create_support_agent(model: Model, db: BaseDb, fee_agent: Agent):
     - be concise, don't repeat the same information multiple times (ie no need to summarize information if it's already provided earlier)
     """,
         add_history_to_context=True,
+        add_datetime_to_context=True,
         num_history_runs=5,
         respond_directly=True,
         determine_input_for_members=True,
