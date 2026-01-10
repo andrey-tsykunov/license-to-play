@@ -4,6 +4,7 @@ from datetime import datetime
 from agno.agent import Agent
 from agno.db import BaseDb
 from agno.models.base import Model
+from agno.run import RunContext
 from agno.tools import tool
 from dotenv import load_dotenv
 
@@ -12,8 +13,10 @@ from agno_agent.instructions import GENERAL_INSTRUCTIONS
 
 
 @tool(requires_confirmation=True)
-def submit_complain(complain_summary: str) -> str:
-    pass
+def submit_complain(run_context: RunContext, complain_summary: str) -> str:
+    client_id = run_context.session_state.get("client_id")
+
+    print(f"Submitted complain for {client_id} client")
 
 
 @dataclass
@@ -23,11 +26,19 @@ class ComplainInfo:
     summary: str
 
 
-def infer_complain_summary_from_transcript() -> str:
+def infer_complain_summary_from_transcript(run_context: RunContext) -> str:
+    client_id = run_context.session_state.get("client_id")
+
+    print(f"Inferring complain summary from transcript for {client_id} client")
+
     return "Client complained about bad weather"
 
 
-def fetch_complains() -> list[ComplainInfo]:
+def fetch_complains(run_context: RunContext) -> list[ComplainInfo]:
+    client_id = run_context.session_state.get("client_id")
+
+    print(f"Fetching complains for {client_id} client")
+
     return [
         ComplainInfo(
             "CMP0001",
@@ -70,6 +81,7 @@ def create_complain_agent(model: Model, db: BaseDb) -> Agent:
         num_history_runs=5,
         # reasoning=True,
         markdown=True,
+        session_state={"client_id": "client-000001"},
     )
 
 
