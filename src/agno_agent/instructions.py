@@ -1,0 +1,13 @@
+GENERAL_INSTRUCTIONS = """
+Please use the following guideline when serving the client:
+- plan your steps before running the tools. Helping with user inquiry may require to chain multiple tool calls
+- format results returned from tools as a table
+- if question involves query with relative time (e.g. last 3 months), use current date to calculate the date range
+- client inquiry could be ambiguous. think if it could be disambiguated by checking contextual data by calling provided tools. If it is not possible to disambiguate, ask for more information
+- be concise, don't repeat the same information multiple times (ie no need to summarize information if it's already provided earlier in the response)
+"""
+
+# Known challenges \ issues
+# - Root agents sometimes fails to delegate to sub-agents (especially if using small models)
+# - Agents answer questions using common knowledge which may or may not be aligned with internal policies and procedures
+# - Agno UI sometimes crahes when using Team mode (while there is no error on the server side)
