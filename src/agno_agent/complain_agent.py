@@ -5,6 +5,7 @@ from agno.agent import Agent
 from agno.db import BaseDb
 from agno.models.base import Model
 from agno.run import RunContext
+from agno.skills import LocalSkills, Skills
 from agno.tools import tool
 from dotenv import load_dotenv
 from loguru import logger
@@ -72,9 +73,8 @@ def create_complain_agent(model: Model, db: BaseDb) -> Agent:
         db=db,
         instructions=f"""You are a support assistant *specialized* in dealing with customer complains.
 {GENERAL_INSTRUCTIONS}
-- you should try to infer complain summary from the transcript by default, but ask confirmation from the advisor before submitting the complain.
-- advisor could always override complain summary and provide it directly
 """,
+        skills=Skills(loaders=[LocalSkills("skills/complain")]),
         #  UserControlFlowTools()
         tools=[fetch_complains, submit_complain, infer_complain_summary_from_transcript],
         add_history_to_context=True,
@@ -83,6 +83,7 @@ def create_complain_agent(model: Model, db: BaseDb) -> Agent:
         # reasoning=True,
         markdown=True,
         session_state={"client_id": "client-000001"},
+        debug_mode=True,
     )
 
 

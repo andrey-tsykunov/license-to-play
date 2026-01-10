@@ -4,6 +4,7 @@ from datetime import datetime
 from agno.agent import Agent
 from agno.db import BaseDb
 from agno.models.base import Model
+from agno.skills import LocalSkills, Skills
 from agno.tools import tool
 from dotenv import load_dotenv
 
@@ -127,10 +128,8 @@ def create_fee_inquiry_agent(model: Model, db: BaseDb) -> Agent:
         db=db,
         instructions=f"""You are a support assistant *specialized* in transaction fee inquiries, explanation and reversal process.
 {GENERAL_INSTRUCTIONS}
-- if client is asking for reversal of a transaction, make sure to check if the transaction is of type "fee", other type of transactions cannot be reversed
-- before proceeding with reversal provide a warning if the client already reversed fees in the past
-- be concise, don't repeat the same information multiple times (ie no need to summarize information if it's already provided earlier)
 """,
+        skills=Skills(loaders=[LocalSkills("skills/fee-inquiry")]),
         #  UserControlFlowTools()
         tools=[reverse_transaction, accounts_list, fetch_transactions, previous_reversals],
         add_history_to_context=True,
@@ -138,6 +137,7 @@ def create_fee_inquiry_agent(model: Model, db: BaseDb) -> Agent:
         num_history_runs=5,
         # reasoning=True,
         markdown=True,
+        debug_mode=True,
     )
 
 

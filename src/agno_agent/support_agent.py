@@ -29,4 +29,5 @@ def create_support_agent(model: Model, agents: list[Agent], db: BaseDb):
         show_members_responses=True,
         stream_events=True,
         markdown=True,
+        debug_mode=True,
     )
