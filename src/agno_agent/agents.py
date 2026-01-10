@@ -2,6 +2,7 @@ from agno.os import AgentOS
 from agno.os.config import AgentOSConfig, ChatConfig
 from agno.os.interfaces.agui import AGUI
 from dotenv import load_dotenv
+from loguru import logger
 
 from agno_agent import agno_docs_agent, research_agent
 from agno_agent.complain_agent import create_complain_agent, get_sample_complain_questions
@@ -45,6 +46,8 @@ agent_os = AgentOS(
     teams=[support_team],
     interfaces=[AGUI(agent=math_agent)],  # optional for testing with AG-UI
 )
+
+logger.info("Created Agent OS")
 
 app = agent_os.get_app()
 

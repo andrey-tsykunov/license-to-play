@@ -7,6 +7,7 @@ from agno.models.base import Model
 from agno.run import RunContext
 from agno.tools import tool
 from dotenv import load_dotenv
+from loguru import logger
 
 from agno_agent.config import create_db, create_model
 from agno_agent.instructions import GENERAL_INSTRUCTIONS
@@ -16,7 +17,7 @@ from agno_agent.instructions import GENERAL_INSTRUCTIONS
 def submit_complain(run_context: RunContext, complain_summary: str) -> str:
     client_id = run_context.session_state.get("client_id")
 
-    print(f"Submitted complain for {client_id} client")
+    logger.info(f"Submitted complain for {client_id} client")
 
 
 @dataclass
@@ -29,7 +30,7 @@ class ComplainInfo:
 def infer_complain_summary_from_transcript(run_context: RunContext) -> str:
     client_id = run_context.session_state.get("client_id")
 
-    print(f"Inferring complain summary from transcript for {client_id} client")
+    logger.info(f"Inferring complain summary from transcript for {client_id} client")
 
     return "Client complained about bad weather"
 
@@ -37,7 +38,7 @@ def infer_complain_summary_from_transcript(run_context: RunContext) -> str:
 def fetch_complains(run_context: RunContext) -> list[ComplainInfo]:
     client_id = run_context.session_state.get("client_id")
 
-    print(f"Fetching complains for {client_id} client")
+    logger.info(f"Fetching complains for {client_id} client")
 
     return [
         ComplainInfo(
