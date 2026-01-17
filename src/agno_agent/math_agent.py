@@ -1,4 +1,5 @@
 from agno.agent import Agent
+from agno.db import BaseDb
 from agno.models.base import Model
 from dotenv import load_dotenv
 
@@ -36,13 +37,16 @@ def divide(a: int, b: int) -> float:
     return a / b
 
 
-def create_math_agent(model: Model) -> Agent:
+def create_math_agent(model: Model, db: BaseDb) -> Agent:
     return Agent(
         name="Math Agent",
+        db=db,
         description="Math Agent that could be used to perform arithmetic operations (add, divide, multiply).",
         model=model,
         instructions="You are a helpful assistant tasked with performing arithmetic on a set of inputs.",
         tools=[multiply, add, divide],
+        add_history_to_context=True,
+        num_history_runs=5,
         markdown=True,
         debug_mode=True,
     )

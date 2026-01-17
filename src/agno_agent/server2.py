@@ -22,15 +22,15 @@ config = AgentOSConfig(
     )
 )
 
-math_agent = create_math_agent(model)
+math_agent = create_math_agent(model, db)
 
 agent_os = AgentOS(
     name="MyAgentOS 2",
     config=config,
     agents=[
         math_agent,
-        agno_docs_agent.create_agent(model),
-        research_agent.create_agent(model),
+        agno_docs_agent.create_agent(model, db),
+        research_agent.create_agent(model, db),
     ],
     interfaces=[A2A(agents=[math_agent])],
 )

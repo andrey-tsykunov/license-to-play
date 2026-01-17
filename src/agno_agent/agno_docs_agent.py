@@ -1,16 +1,15 @@
 from agno.agent import Agent
+from agno.db import BaseDb
 from agno.models.base import Model
 from agno.tools.mcp import MCPTools
 
-from agno_agent.config import create_db
 
-
-def create_agent(model: Model) -> Agent:
+def create_agent(model: Model, db: BaseDb) -> Agent:
     return Agent(
         name="Agno Agent",
         model=model,
         # Add a database to the Agent
-        db=create_db(),
+        db=db,
         # Add the Agno MCP server to the Agent
         tools=[MCPTools(transport="streamable-http", url="https://docs.agno.com/mcp")],
         # Add the previous session history to the context
