@@ -71,9 +71,9 @@ This would make it accessible via:
 [Agno](https://docs.agno.com/introduction) is an incredibly fast multi-agent framework, runtime and control plane.
 
 ```bash
-fastapi dev src/agno_agent/agents.py
+fastapi dev src/agno_agent/server1.py
 # or in DEBUG mode
-AGNO_DEBUG=True fastapi dev src/agno_agent/agents.py
+AGNO_DEBUG=True fastapi dev src/agno_agent/server1.py
 ```
 
 This would make it accessible via:
@@ -84,11 +84,12 @@ This would make it accessible via:
 
 Alternatively, run directly with python:
 ```bash
-PYTHONPATH=src python src/agno_agent/agents.py
+PYTHONPATH=src python src/agno_agent/server2.py
+# or
+PYTHONPATH=src python -m agno_agent.server2
 ````
-
 This would make it accessible via:
-* REST API: http://127.0.0.1:7777/docs
+* REST API:http://127.0.0.1:7777/docs
 * etc
 
 

@@ -39,10 +39,12 @@ def divide(a: int, b: int) -> float:
 def create_math_agent(model: Model) -> Agent:
     return Agent(
         name="Math Agent",
+        description="Math Agent that could be used to perform arithmetic operations (add, divide, multiply).",
         model=model,
         instructions="You are a helpful assistant tasked with performing arithmetic on a set of inputs.",
         tools=[multiply, add, divide],
         markdown=True,
+        debug_mode=True,
     )
 
 

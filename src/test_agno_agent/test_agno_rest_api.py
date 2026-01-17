@@ -7,7 +7,7 @@ from agno.run.agent import RunCompletedEvent, RunContentEvent
 
 @pytest.fixture(scope="module")
 def client():
-    return AgentOSClient(base_url="http://localhost:8000")
+    return AgentOSClient(base_url="http://localhost:7777")
 
 
 @pytest.fixture(scope="module")
