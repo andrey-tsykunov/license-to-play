@@ -8,9 +8,12 @@ from loguru import logger
 from agno_agent.complain_agent import create_complain_agent, get_sample_complain_questions
 from agno_agent.config import create_db, create_model
 from agno_agent.fee_agent import create_fee_inquiry_agent, get_sample_fee_questions
+from agno_agent.observability import setup_observability
 from agno_agent.support_agent import create_support_agent
 
 load_dotenv()
+
+setup_observability()
 
 model = create_model(max_tokens=16384)
 db = create_db()

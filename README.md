@@ -72,6 +72,7 @@ This would make it accessible via:
 
 ```bash
 fastapi dev src/agno_agent/server1.py
+fastapi dev --port 7777 src/agno_agent/server2.py
 # or in DEBUG mode
 AGNO_DEBUG=True fastapi dev src/agno_agent/server1.py
 ```
@@ -92,6 +93,19 @@ This would make it accessible via:
 * REST API:http://127.0.0.1:7777/docs
 * etc
 
+
+# Observability
+
+## Arize Phoenix
+This project uses [Arize Phoenix](https://phoenix.arize.com/) for local observability and tracing.
+
+To start the Phoenix server:
+
+```bash
+uv run python -m phoenix.server.main serve
+```
+
+This will make the UI available at: http://localhost:6006
 
 # MCP servers
 
