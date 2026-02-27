@@ -15,7 +15,7 @@ uv add langgraph
 uv add --dev "pytest==8.4.2"
 
 # upgrade dependency
-uv lock --upgrade-package langgraph
+uv lock --upgrade-package agno
 
 # show all dependencies
 uv tree
