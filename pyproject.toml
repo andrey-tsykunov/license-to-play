@@ -16,6 +16,7 @@ dependencies = [
     "deepagents>=0.3.0",
     "fastapi[standard]>=0.127.0",
     "firecrawl-py>=4.12.0",
+    "google-adk>=1.14.1",
     "langchain-openai>=1.1.6",
     "langgraph>=1.0.5",
     "loguru>=0.7.3",

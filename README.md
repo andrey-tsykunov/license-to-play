@@ -66,6 +66,13 @@ This would make it accessible via:
 * [Agent Chat UI](https://github.com/langchain-ai/agent-chat-ui): https://agentchat.vercel.app/
 * [Deep Agent UI](https://github.com/langchain-ai/deep-agents-ui): http://localhost:3000/
 
+# Google ADK agents
+
+```
+adk run src/google_adk_agent
+adk web src
+```
+
 # Agno agents
 
 [Agno](https://docs.agno.com/introduction) is an incredibly fast multi-agent framework, runtime and control plane.
