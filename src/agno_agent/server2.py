@@ -1,6 +1,5 @@
 from agno.os import AgentOS
 from agno.os.config import AgentOSConfig, ChatConfig
-from agno.os.interfaces.a2a import A2A
 from dotenv import load_dotenv
 from loguru import logger
 
@@ -32,7 +31,7 @@ agent_os = AgentOS(
         agno_docs_agent.create_agent(model, db),
         research_agent.create_agent(model, db),
     ],
-    interfaces=[A2A(agents=[math_agent])],
+    a2a_interface=True,
 )
 
 logger.info("Created Agent OS")

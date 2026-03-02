@@ -24,6 +24,13 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/64/e8/f4e39fd1cf0b3c4537b974637143f3ebfe1158dad7232d9eef15666a81ba/a2a_sdk-0.3.22-py3-none-any.whl", hash = "sha256:b98701135bb90b0ff85d35f31533b6b7a299bf810658c1c65f3814a6c15ea385", size = 144347, upload-time = "2025-12-16T18:39:19.218Z" },
 ]
 
+[package.optional-dependencies]
+http-server = [
+    { name = "fastapi" },
+    { name = "sse-starlette" },
+    { name = "starlette" },
+]
+
 [[package]]
 name = "absolufy-imports"
 version = "0.3.1"
@@ -2814,7 +2821,7 @@ name = "license-to-play"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "a2a-sdk" },
+    { name = "a2a-sdk", extra = ["http-server"] },
     { name = "ag-ui-protocol" },
     { name = "agent-framework" },
     { name = "agno" },
@@ -2859,7 +2866,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "a2a-sdk", specifier = ">=0.3.22" },
+    { name = "a2a-sdk", extras = ["http-server"], specifier = ">=0.3.22" },
     { name = "ag-ui-protocol", specifier = ">=0.1.10" },
     { name = "agent-framework", specifier = ">=1.0.0b251120" },
     { name = "agno", specifier = ">=2.3.21" },

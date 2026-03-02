@@ -54,6 +54,7 @@ agent_os = AgentOS(
     ],
     teams=[support_team],
     interfaces=[AGUI(agent=fee_agent)],  # optional for testing with AG-UI
+    a2a_interface=True,
 )
 
 logger.info("Created Agent OS")
