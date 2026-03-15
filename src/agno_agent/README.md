@@ -13,7 +13,7 @@ This would make it accessible via:
 * REST API: http://127.0.0.1:8000/docs
 * Agent OS Config: http://127.0.0.1:8000/config
 * [Agno OS UI](https://docs.agno.com/agent-os/introduction): https://os.agno.com/
-* [Agent UI](https://docs.agno.com/basics/agent-ui/overview): http://localhost:3000/
+* [Agent UI](https://docs.agno.com/basics/agent-ui/overview): http://127.0.0.1:3000/
 
 Alternatively, run directly with python:
 ```bash
