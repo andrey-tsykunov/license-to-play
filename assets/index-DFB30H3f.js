@@ -22,9 +22,8 @@ uv sync --all-groups
 # Copy and fill in env vars
 cp .env.example .env
 
-# Start Agno REST server
-fastapi dev --port 7777 \\
-  src/agno_agent/server2.py
+# Start Agno (AgentOS UI)
+fastapi dev src/agno_agent/server1.py
 
 # Observability (optional)
 uv run python -m phoenix.server.main serve`})})]}),(0,d.jsxs)(`div`,{className:`code-block`,children:[(0,d.jsxs)(`div`,{className:`code-block-header`,children:[(0,d.jsx)(`span`,{children:`Other Frameworks`}),(0,d.jsx)(`span`,{className:`code-lang`,children:`bash`})]}),(0,d.jsx)(`pre`,{children:(0,d.jsx)(`code`,{children:`# Run tests
