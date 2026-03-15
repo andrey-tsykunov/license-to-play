@@ -8,8 +8,11 @@ license-to-play is a repository to experiment with agentic AI
 - [Setup](#setup)
   - [Git Hooks](#git-hooks)
   - [Linters & Formatters](#linters--formatters)
-- [Agents](#agents)
-  - [Pydantic AI agents](#pydantic-ai-agents)
+- Agents
+  - [LangGraph](src/langgraph_agent/README.md)
+  - [Google ADK](src/google_adk_agent/README.md)
+  - [Agno](src/agno_agent/README.md)
+  - [Pydantic AI](src/pydantic_ai_agent/README.md)
 - [Observability](#observability)
   - [Arize Phoenix](#arize-phoenix)
 - [Web Frontend](#web-frontend)
@@ -64,22 +67,6 @@ pre-commit run --all-files
 ruff check
 ruff format
 ```
-
-# Agents
-
-- [LangGraph agents](src/langgraph_agent/README.md)
-- [Google ADK agents](src/google_adk_agent/README.md)
-- [Agno agents](src/agno_agent/README.md)
-- [Pydantic AI agents](src/pydantic_ai_agent/README.md)
-
-## Pydantic AI agents
-
-Research agent with **structured typed outputs** — the LLM returns a validated `ResearchReport` Pydantic model instead of raw text, giving you IDE autocompletion, runtime validation, and easy JSON serialisation.
-
-```bash
-PYTHONPATH=src python src/pydantic_ai_agent/research_agent.py "agentic AI frameworks 2025"
-```
-
 
 # Observability
 
