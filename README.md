@@ -3,6 +3,19 @@ license-to-play is a repository to experiment with agentic AI
 
 **Project website:** https://andrey-tsykunov.github.io/license-to-play/
 
+## Table of Contents
+
+- [Setup](#setup)
+  - [Git Hooks](#git-hooks)
+  - [Linters & Formatters](#linters--formatters)
+- [Agents](#agents)
+- [Observability](#observability)
+  - [Arize Phoenix](#arize-phoenix)
+- [Web Frontend](#web-frontend)
+  - [Local development](#local-development)
+  - [Deploy to GitHub Pages](#deploy-to-github-pages)
+- [MCP Servers](#mcp-servers)
+
 # Setup
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/).
