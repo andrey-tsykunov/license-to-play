@@ -209,3 +209,6 @@ __marimo__/
 .idea/
 .langgraph_api/
 .agno/
+
+# Claude Code
+.claude/settings.local.json
