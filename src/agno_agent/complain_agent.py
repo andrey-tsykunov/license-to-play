@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from loguru import logger
 
 from agno_agent.config import create_db, create_model
+from agno_agent.constants import SKILLS_ROOT
 from agno_agent.instructions import GENERAL_INSTRUCTIONS
 
 
@@ -74,7 +75,7 @@ def create_complain_agent(model: Model, db: BaseDb) -> Agent:
         instructions=f"""You are a support assistant *specialized* in dealing with customer complains.
 {GENERAL_INSTRUCTIONS}
 """,
-        skills=Skills(loaders=[LocalSkills("skills/complain")]),
+        skills=Skills(loaders=[LocalSkills(SKILLS_ROOT / "complain")]),
         #  UserControlFlowTools()
         tools=[fetch_complains, submit_complain, infer_complain_summary_from_transcript],
         add_history_to_context=True,

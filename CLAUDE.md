@@ -67,7 +67,7 @@ Each agent framework lives in its own `src/<framework>_agent/` directory. Most i
 - Multi-agent team with AgentOS orchestration
 - Agents: fee_agent, complain_agent, math_agent, support_agent, research_agent, agno_docs_agent
 - REST API via FastAPI + A2A (Agent-to-Agent) interface
-- Skills in `skills/` directory (complain, fee-inquiry)
+- Skills in `src/agno_agent/skills/` directory (complain, fee-inquiry)
 - SQLite persistence via `.agno/agno.db`
 
 **LangGraph** (`src/langgraph_agent/`)

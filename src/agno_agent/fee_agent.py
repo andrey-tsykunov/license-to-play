@@ -9,6 +9,7 @@ from agno.tools import tool
 from dotenv import load_dotenv
 
 from agno_agent.config import create_db, create_model
+from agno_agent.constants import SKILLS_ROOT
 from agno_agent.instructions import GENERAL_INSTRUCTIONS
 
 
@@ -129,7 +130,7 @@ def create_fee_inquiry_agent(model: Model, db: BaseDb) -> Agent:
         instructions=f"""You are a support assistant *specialized* in transaction fee inquiries, explanation and reversal process.
 {GENERAL_INSTRUCTIONS}
 """,
-        skills=Skills(loaders=[LocalSkills("skills/fee-inquiry")]),
+        skills=Skills(loaders=[LocalSkills(SKILLS_ROOT / "fee-inquiry")]),
         #  UserControlFlowTools()
         tools=[reverse_transaction, accounts_list, fetch_transactions, previous_reversals],
         add_history_to_context=True,
