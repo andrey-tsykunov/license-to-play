@@ -1,6 +1,8 @@
 # Overview
 license-to-play is a repository to experiment with agentic AI
 
+**Project website:** https://andrey-tsykunov.github.io/license-to-play/
+
 # Setup
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/).
@@ -68,6 +70,30 @@ uv run python -m phoenix.server.main serve
 ```
 
 This will make the UI available at: http://localhost:6006
+
+# Web Frontend
+
+The project has a React frontend in the `web/` directory, deployed to GitHub Pages.
+
+## Local development
+
+Requires [Node.js](https://nodejs.org/) 18+.
+
+```bash
+cd web
+npm install
+npm run dev
+# Open http://localhost:5173/license-to-play/
+```
+
+## Deploy to GitHub Pages
+
+```bash
+cd web
+npm run deploy
+```
+
+This builds the app and pushes to the `gh-pages` branch. Deployment also runs automatically via GitHub Actions on every push to `main` that touches `web/`.
 
 # MCP servers
 
