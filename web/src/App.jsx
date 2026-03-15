@@ -73,6 +73,16 @@ const frameworks = [
     features: ['Structured typed outputs', 'Runtime validation', 'Multi-provider support', 'JSON serialisation'],
     badge: 'Structured Output',
   },
+  {
+    id: 'crewai',
+    name: 'CrewAI',
+    icon: '👥',
+    color: '#f97316',
+    description: 'Role-based multi-agent pipelines where specialised agents each own a stage and task outputs chain forward as context. Showcased as a Tech Stack Evaluator: Researcher → Analyst → Writer.',
+    agents: ['researcher', 'analyst', 'writer'],
+    features: ['Role-based agents with backstories', 'Sequential task pipelines', 'Explicit task context chaining', 'Process orchestration'],
+    badge: 'Role-Based Pipeline',
+  },
 ]
 
 const providers = [
@@ -167,7 +177,7 @@ function App() {
           </h1>
           <p className="hero-subtitle">
             A multi-framework playground comparing agentic AI implementations across
-            Agno, LangGraph, Google ADK, Claude SDK, and OpenAI — using the same core
+            Agno, LangGraph, Google ADK, Claude SDK, OpenAI, and CrewAI — using the same core
             agents as a cross-framework benchmark.
           </p>
           <div className="hero-actions">
@@ -180,7 +190,7 @@ function App() {
           </div>
           <div className="hero-stats">
             <div className="stat">
-              <span className="stat-value">7</span>
+              <span className="stat-value">8</span>
               <span className="stat-label">Frameworks</span>
             </div>
             <div className="stat-divider" />
@@ -212,7 +222,7 @@ function App() {
             <div className="card feature-card">
               <div className="feature-icon">🔬</div>
               <h3>Cross-Framework Comparison</h3>
-              <p>Same agents (math, research, support) implemented across 6 frameworks — a true apples-to-apples benchmark.</p>
+              <p>Same agents (math, research, support) implemented across 8 frameworks — a true apples-to-apples benchmark.</p>
             </div>
             <div className="card feature-card">
               <div className="feature-icon">🔌</div>

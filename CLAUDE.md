@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**license-to-play** is an agentic AI experimentation repository that implements the same core agents (math, research, support) across multiple frameworks for comparison: Agno, LangGraph, Google ADK, Claude SDK, and OpenAI/Microsoft Agents.
+**license-to-play** is an agentic AI experimentation repository that implements the same core agents (math, research, support) across multiple frameworks for comparison: Agno, LangGraph, Google ADK, Claude SDK, OpenAI/Microsoft Agents, and CrewAI.
 
 ## Development Commands
 
@@ -48,6 +48,12 @@ adk run src/google_adk_agent
 adk web src
 ```
 
+**CrewAI:**
+```bash
+PYTHONPATH=src python src/crewai_agent/main.py                   # Evaluate LangGraph (default)
+PYTHONPATH=src python src/crewai_agent/main.py --topic "FastAPI" # Evaluate any tech
+```
+
 **Observability (Arize Phoenix):**
 ```bash
 uv run python -m phoenix.server.main serve   # http://localhost:6006
@@ -82,6 +88,11 @@ Each agent framework lives in its own `src/<framework>_agent/` directory. Most i
 
 **OpenAI/Microsoft** (`src/openai_agent/`, `src/microsoft_agent/`)
 - Multi-language agent with handoff capabilities, session-based
+
+**CrewAI** (`src/crewai_agent/`)
+- Tech Stack Evaluator: role-based pipeline with Researcher → Analyst → Writer agents
+- Highlights CrewAI's sequential task chaining and `context=` dependency wiring
+- Run: `PYTHONPATH=src python src/crewai_agent/main.py --topic "FastAPI"`
 
 ### Model Support
 All agents support multiple providers via environment config:
