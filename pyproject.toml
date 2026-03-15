@@ -30,6 +30,7 @@ dependencies = [
     "opentelemetry-sdk>=1.39.1",
     "perplexityai>=0.22.2",
     "pillow>=12.0.0",
+    "pydantic-ai>=1.55.0",
     "python-dotenv>=1.2.1",
     "sqlalchemy>=2.0.45",
     "tavily-python>=0.7.17",

@@ -63,6 +63,16 @@ const frameworks = [
     features: ['Session management', 'Azure compatible', 'Basic agent pattern'],
     badge: null,
   },
+  {
+    id: 'pydantic-ai',
+    name: 'Pydantic AI',
+    icon: '🏗️',
+    color: '#e11d48',
+    description: 'Type-safe agent framework built on Pydantic. Unique feature: structured typed outputs — the LLM returns validated Pydantic models instead of raw text, with full IDE autocompletion.',
+    agents: ['research_agent'],
+    features: ['Structured typed outputs', 'Runtime validation', 'Multi-provider support', 'JSON serialisation'],
+    badge: 'Structured Output',
+  },
 ]
 
 const providers = [
@@ -170,7 +180,7 @@ function App() {
           </div>
           <div className="hero-stats">
             <div className="stat">
-              <span className="stat-value">6</span>
+              <span className="stat-value">7</span>
               <span className="stat-label">Frameworks</span>
             </div>
             <div className="stat-divider" />
