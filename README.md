@@ -13,6 +13,9 @@ license-to-play is a repository to experiment with agentic AI
   - [Google ADK](src/google_adk_agent/README.md)
   - [Agno](src/agno_agent/README.md)
   - [Pydantic AI](src/pydantic_ai_agent/README.md)
+  - [Claude SDK](src/claude_agent/)
+  - [OpenAI / Microsoft Agents](src/openai_agent/)
+  - [CrewAI](src/crewai_agent/)
 - [Observability](#observability)
   - [Arize Phoenix](#arize-phoenix)
 - [Web Frontend](#web-frontend)
@@ -47,9 +50,10 @@ uv pip show PyYAML
 source .venv/bin/activate
 # to run using venv
 uv run python --version
-```
 
-Configure .env file based on .env.example
+# copy env template and populate required keys
+cp .env.example .env
+```
 
 ## Git Hooks
 
